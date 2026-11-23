@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEBULA SPOT — Cosmic Spot the Difference</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div id="app">
+  <header id="hud">
+    <div class="brand">
+      <div class="logo">NEBULA SPOT</div>
+      <div id="round-name" class="round-name">STARLIGHT GARDEN</div>
+    </div>
+    <div id="counter" class="counter">FOUND 0 / 7 · 7 REMAIN</div>
+    <div class="timer">
+      <div id="timer-fill" class="timer-fill"></div>
+      <span id="timer-text" class="timer-text">3:00</span>
+    </div>
+    <div class="score-box">
+      <div class="score-label">SCORE</div>
+      <div id="score" class="score">0</div>
+      <div id="best" class="best">BEST 0</div>
+    </div>
+    <div class="hud-buttons">
+      <button id="btn-hint" class="hud-btn" title="Hint (H)">HINT <span id="hints">✦ 3</span></button>
+      <button id="btn-restart" class="hud-btn" title="Restart round (R)">RESTART</button>
+      <button id="btn-menu" class="hud-btn" title="Menu (Esc)">MENU</button>
+      <button id="btn-mute" class="hud-btn" title="Mute (M)">SOUND ON</button>
+    </div>
+  </header>
+
+  <main id="stage">
+    <div class="panel-wrap">
+      <div class="panel-tag">A · ORIGINAL</div>
+      <canvas id="panel-left" data-side="left"></canvas>
+      <canvas id="mark-left" class="mark-layer"></canvas>
+      <div id="cursor" class="cursor" style="display:none"></div>
+    </div>
+    <div class="panel-divider"><span>VS</span></div>
+    <div class="panel-wrap">
+      <div class="panel-tag">B · FIND THE CHANGES</div>
+      <canvas id="panel-right" data-side="right"></canvas>
+      <canvas id="mark-right" class="mark-layer"></canvas>
+    </div>
+
+    <section id="menu" class="overlay">
+      <div class="card">
+        <h1>NEBULA SPOT</h1>
+        <p class="tagline">Two pictures. One universe. Spot every difference before time runs out.</p>
+        <p class="howto">Click a difference on either picture — or move the crosshair with the
+        arrow keys and press Enter. Wrong clicks cost 3 seconds. Hints cost 50 points.</p>
+        <div class="round-cards">
+          <button class="round-card" data-round="0">
+            <span class="round-num">01</span>
+            <span class="round-title">Starlight Garden</span>
+            <span class="round-meta">Warm-up hunt · 180s</span>
+            <span class="round-count">7 differences</span>
+          </button>
+          <button class="round-card" data-round="1">
+            <span class="round-num">02</span>
+            <span class="round-title">Moon Harbor</span>
+            <span class="round-meta">Trickier tides · 150s</span>
+            <span class="round-count">9 differences</span>
+          </button>
+          <button class="round-card" data-round="2">
+            <span class="round-num">03</span>
+            <span class="round-title">Nebula Observatory</span>
+            <span class="round-meta">Deep-space final · 120s</span>
+            <span class="round-count">10 differences</span>
+          </button>
+        </div>
+        <p id="menu-best" class="menu-best">BEST 0</p>
+        <p class="keys">ARROWS move · ENTER mark · H hint · R restart · M sound · ESC menu</p>
+      </div>
+    </section>
+
+    <section id="round-clear" class="overlay hidden">
+      <div class="card small">
+        <h2 id="clear-title">ROUND CLEAR!</h2>
+        <div id="clear-stars" class="stars">★★★</div>
+        <p id="clear-detail" class="detail"></p>
+        <button id="btn-next" class="big-btn">NEXT ROUND (N) →</button>
+      </div>
+    </section>
+
+    <section id="victory" class="overlay hidden">
+      <div class="card small">
+        <h2>ALL WORLDS CLEARED!</h2>
+        <div class="stars">★★★</div>
+        <p class="detail">You spotted all 26 differences across the three worlds.</p>
+        <p class="final-score">FINAL SCORE <span id="victory-score">0</span></p>
+        <p id="victory-best" class="menu-best">BEST 0</p>
+        <button id="btn-again" class="big-btn">PLAY AGAIN</button>
+        <button id="btn-victory-menu" class="ghost-btn">BACK TO MENU</button>
+      </div>
+    </section>
+
+    <section id="time-up" class="overlay hidden">
+      <div class="card small">
+        <h2>TIME'S UP!</h2>
+        <p id="timeup-detail" class="detail"></p>
+        <button id="btn-retry" class="big-btn">TRY AGAIN (R)</button>
+      </div>
+    </section>
+  </main>
+
+  <footer id="foot">
+    <span>Click either picture to mark a difference · H for a hint · find them all before the timer ends</span>
+  </footer>
+</div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
